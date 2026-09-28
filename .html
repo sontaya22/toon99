@@ -1,0 +1,1733 @@
+
+<html lang="th" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ครัวหลุดโลก - Crazy Cosmic Kitchen & Cyber Payment</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Kanit, Orbitron, Chakra Petch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Kanit:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#060810',
+                            card: '#0d1222',
+                            cyan: '#00f3ff',
+                            pink: '#ff007f',
+                            lime: '#39ff14',
+                            purple: '#a855f7',
+                            gold: '#ffd700',
+                            orange: '#ff6600'
+                        }
+                    },
+                    fontFamily: {
+                        kanit: ['Kanit', 'sans-serif'],
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        chakra: ['Chakra Petch', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #060810;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .font-chakra { font-family: 'Chakra Petch', sans-serif; }
+
+        /* Neon Glow Effects */
+        .neon-glow-cyan {
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.35), inset 0 0 8px rgba(0, 243, 255, 0.15);
+            border: 1px solid rgba(0, 243, 255, 0.5);
+        }
+
+        .neon-glow-pink {
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.35), inset 0 0 8px rgba(255, 0, 127, 0.15);
+            border: 1px solid rgba(255, 0, 127, 0.5);
+        }
+
+        .neon-glow-lime {
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.35), inset 0 0 8px rgba(57, 255, 20, 0.15);
+            border: 1px solid rgba(57, 255, 20, 0.5);
+        }
+
+        .text-glow-cyan {
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.8), 0 0 20px rgba(0, 243, 255, 0.4);
+        }
+
+        .text-glow-pink {
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.8), 0 0 20px rgba(255, 0, 127, 0.4);
+        }
+
+        .cyber-glass {
+            background: rgba(13, 18, 34, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .cyber-grid {
+            background-image: linear-gradient(to right, rgba(0, 243, 255, 0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 243, 255, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .scanlines::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            z-index: 20;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.02); opacity: 1; }
+        }
+        .animate-pulse-slow { animation: pulse-slow 3s infinite ease-in-out; }
+
+        @keyframes scanbeam {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+        .animate-scanbeam {
+            position: absolute;
+            left: 0; right: 0; height: 10px;
+            background: linear-gradient(to bottom, transparent, rgba(0, 243, 255, 0.8), transparent);
+            animation: scanbeam 2.2s infinite linear;
+        }
+
+        /* Hologram Receipt Effect */
+        .holo-receipt {
+            background: linear-gradient(135deg, rgba(13, 18, 34, 0.95) 0%, rgba(6, 8, 16, 0.98) 100%);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.25), inset 0 0 15px rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.4);
+            position: relative;
+        }
+        .holo-receipt::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%, rgba(0,243,255,0.05) 100%);
+            pointer-events: none;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #060810; }
+        ::-webkit-scrollbar-thumb { background: #00f3ff; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff007f; }
+    </style>
+</head>
+<body class="cyber-grid min-h-screen text-slate-100 scanlines flex flex-col justify-between">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 cyber-glass border-b border-cyber-cyan/30 px-4 lg:px-8 py-3 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyber-cyan to-cyber-pink p-[2px] flex items-center justify-center shadow-lg shadow-cyber-cyan/20 group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-cyber-bg rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid font-orbitron fa-shuttle-space text-cyber-cyan group-hover:rotate-45 transition-transform duration-500"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-black font-orbitron tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-white to-cyber-pink text-glow-cyan">
+                        ครัวหลุดโลก
+                    </h1>
+                    <p class="text-[10px] font-orbitron text-cyber-cyan tracking-widest uppercase -mt-1 opacity-80">
+                        CRAZY COSMIC KITCHEN 2099
+                    </p>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-6 font-medium text-sm">
+                <a href="#menu-section" class="hover:text-cyber-cyan transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-utensils text-cyber-pink"></i> เมนูอาหาร (10)
+                </a>
+                <a href="#synthesizer-section" class="hover:text-cyber-cyan transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-flask text-cyber-cyan"></i> AI สังเคราะห์อาหาร
+                </a>
+                <a href="#game-section" class="hover:text-cyber-cyan transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-gamepad text-cyber-lime"></i> เกมรับส่วนลด
+                </a>
+                <button onclick="openPitchModal()" class="px-3 py-1.5 rounded-lg bg-cyber-purple/20 border border-cyber-purple text-cyber-purple hover:bg-cyber-purple/40 hover:text-white transition-all text-xs font-semibold flex items-center gap-1.5">
+                    <i class="fa-solid fa-presentation-screen"></i> 15-Min Pitch Deck
+                </button>
+            </nav>
+
+            <!-- Actions Controls -->
+            <div class="flex items-center gap-3">
+                <!-- SFX Toggle -->
+                <button id="sfx-btn" onclick="toggleAudio()" class="w-9 h-9 rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-cyber-cyan hover:border-cyber-cyan transition-all" title="เปิด/ปิด เสียงเอฟเฟกต์">
+                    <i class="fa-solid fa-volume-high text-sm"></i>
+                </button>
+
+                <!-- Pitch Mobile Icon -->
+                <button onclick="openPitchModal()" class="md:hidden w-9 h-9 rounded-lg bg-cyber-purple/20 border border-cyber-purple flex items-center justify-center text-cyber-purple" title="Pitch Deck">
+                    <i class="fa-solid fa-presentation-screen text-sm"></i>
+                </button>
+
+                <!-- Cart Button -->
+                <button onclick="toggleCartModal()" class="relative px-4 py-2 rounded-xl bg-gradient-to-r from-cyber-cyan to-cyber-pink text-slate-950 font-bold text-sm flex items-center gap-2 hover:brightness-110 shadow-lg shadow-cyber-cyan/20 active:scale-95 transition-all">
+                    <i class="fa-solid fa-cart-shopping text-base"></i>
+                    <span class="hidden sm:inline font-chakra">ตะกร้า</span>
+                    <span id="cart-count" class="w-5 h-5 rounded-full bg-slate-950 text-cyber-cyan text-xs flex items-center justify-center font-black">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-16 flex-grow w-full">
+
+        <!-- HERO BANNER SECTION -->
+        <section class="relative rounded-3xl overflow-hidden border border-cyber-cyan/30 bg-gradient-to-br from-cyber-card via-cyber-bg to-slate-950 p-6 md:p-12 shadow-2xl">
+            <div class="absolute -top-20 -left-20 w-72 h-72 bg-cyber-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-20 -right-20 w-72 h-72 bg-cyber-pink/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyber-cyan/10 border border-cyber-cyan/40 text-cyber-cyan text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-cyber-lime animate-ping"></span>
+                        ระบบชำระเงินดิจิทัล & จัดส่งวาร์ปควอนตัม ยุค 2099
+                    </div>
+
+                    <h2 class="text-3xl md:text-5xl lg:text-6xl font-black leading-tight tracking-wide font-orbitron">
+                        สัมผัสรสชาติ <br class="hidden sm:inline"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-cyber-pink to-cyber-lime text-glow-pink">
+                            ระดับมัลติเวิร์ส
+                        </span>
+                    </h2>
+
+                    <p class="text-slate-300 text-sm md:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        ยินดีต้อนรับสู่ <strong class="text-cyber-cyan">"ครัวหลุดโลก"</strong> ร้านอาหารตามสั่งยุคดิจิทัล ผสานระบบจ่ายเงิน PromptPay QR, Cyber Credit Card, และ Crypto Wallet สั่งปุ๊บ สแกนจ่ายปั๊บ วาร์ปส่งตรงถึงพิกัดคุณใน 3 วินาที!
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#menu-section" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyber-cyan to-blue-600 text-slate-950 font-bold hover:shadow-lg hover:shadow-cyber-cyan/40 transition-all transform hover:-translate-y-0.5 active:scale-95 flex items-center gap-2">
+                            <i class="fa-solid fa-utensils"></i> ดูเมนูหลุดโลกทั้ง 10 เมนู
+                        </a>
+                        <button onclick="toggleCartModal()" class="px-6 py-3 rounded-xl bg-slate-800/80 border border-cyber-pink/50 text-cyber-pink hover:bg-cyber-pink/20 font-bold transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-credit-card"></i> ไปหน้าสั่งซื้อ & ชำระเงิน
+                        </button>
+                    </div>
+
+                    <!-- Metrics -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800 text-center lg:text-left">
+                        <div>
+                            <div class="text-xl md:text-2xl font-black font-orbitron text-cyber-cyan">100%</div>
+                            <div class="text-xs text-slate-400">ชำระเงินปลอดภัย 256-bit</div>
+                        </div>
+                        <div>
+                            <div class="text-xl md:text-2xl font-black font-orbitron text-cyber-pink">3.14s</div>
+                            <div class="text-xs text-slate-400">เวลาวาร์ปส่งอาหาร</div>
+                        </div>
+                        <div>
+                            <div class="text-xl md:text-2xl font-black font-orbitron text-cyber-lime">4 Ways</div>
+                            <div class="text-xs text-slate-400">ช่องทางชำระเงินไซเบอร์</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphic Visual -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm aspect-square rounded-2xl bg-slate-900/80 border-2 border-cyber-cyan/50 p-4 shadow-2xl flex flex-col items-center justify-center text-center group overflow-hidden neon-glow-cyan">
+                        <div class="animate-scanbeam"></div>
+                        <div class="w-40 h-40 rounded-full bg-gradient-to-tr from-cyber-cyan/20 to-cyber-pink/20 flex items-center justify-center relative mb-4 animate-pulse-slow">
+                            <span class="text-7xl group-hover:scale-110 transition-transform duration-300">🛸</span>
+                            <div class="absolute inset-0 border border-dashed border-cyber-cyan rounded-full animate-spin" style="animation-duration: 15s;"></div>
+                        </div>
+                        <h3 class="text-lg font-bold font-orbitron text-cyber-cyan">Quantum Food & Payment Gateway</h3>
+                        <p class="text-xs text-slate-400 mt-1">พร้อมรองรับ QR PromptPay, Cyber Card & Crypto</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOD MENU CAROUSEL SLIDER SECTION -->
+        <section id="menu-section" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold font-orbitron text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-white flex items-center gap-2">
+                        <i class="fa-solid fa-bowl-food text-cyber-pink"></i> เมนูอาหารหลุดโลก (10 เมนู)
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">สไลด์เลือกเมนูฟิวเจอร์ริสติก พร้อมข้อมูลโภชนาการควอนตัมและบัฟพลังงาน</p>
+                </div>
+
+                <!-- Filter Category Tabs -->
+                <div class="flex flex-wrap gap-2" id="category-filters"></div>
+            </div>
+
+            <!-- Carousel Slider -->
+            <div class="relative group">
+                <button onclick="scrollMenuSlider(-1)" class="absolute -left-3 md:-left-5 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/90 border-2 border-cyber-cyan text-cyber-cyan flex items-center justify-center hover:bg-cyber-cyan hover:text-slate-950 transition-all shadow-lg shadow-cyber-cyan/30 active:scale-90">
+                    <i class="fa-solid fa-chevron-left text-base"></i>
+                </button>
+
+                <button onclick="scrollMenuSlider(1)" class="absolute -right-3 md:-right-5 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-slate-900/90 border-2 border-cyber-cyan text-cyber-cyan flex items-center justify-center hover:bg-cyber-cyan hover:text-slate-950 transition-all shadow-lg shadow-cyber-cyan/30 active:scale-90">
+                    <i class="fa-solid fa-chevron-right text-base"></i>
+                </button>
+
+                <div id="menu-slider" class="flex items-stretch gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory py-4 px-2 scroll-smooth"></div>
+            </div>
+
+            <div id="menu-dots" class="flex items-center justify-center gap-2 pt-2"></div>
+        </section>
+
+        <!-- MINI GAME 1: CYBER KITCHEN SYNTHESIZER -->
+        <section id="synthesizer-section" class="rounded-3xl bg-cyber-card border border-cyber-pink/40 p-6 md:p-10 shadow-2xl relative overflow-hidden neon-glow-pink">
+            <div class="max-w-3xl mx-auto space-y-6 text-center">
+                <div class="inline-block px-3 py-1 rounded-full bg-cyber-pink/20 border border-cyber-pink text-cyber-pink text-xs font-mono font-bold">
+                    <i class="fa-solid fa-flask"></i> MINI-GAME #1: AI KITCHEN SYNTHESIZER
+                </div>
+
+                <h2 class="text-2xl md:text-4xl font-black font-orbitron text-white">
+                    ห้องสังเคราะห์อาหาร AI หลุดโลก
+                </h2>
+                <p class="text-slate-300 text-sm">
+                    เลือกวัตถุดิบสุดประหลาด 3 ชนิด แล้วให้ AI คลองควอนตัมสังเคราะห์เป็นเมนูใหม่เฉพาะตัวคุณ!
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left pt-2">
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-cyber-cyan uppercase font-orbitron block">1. วัตถุดิบหลัก (Base)</label>
+                        <select id="synth-base" class="w-full bg-slate-900 border border-cyber-cyan/50 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-cyber-cyan">
+                            <option value="หมูกรอบควอนตัม">🥓 หมูกรอบควอนตัม</option>
+                            <option value="กุ้งพลาสมาเนบิวลา">🦐 กุ้งพลาสมาเนบิวลา</option>
+                            <option value="เต้าหู้นีออนมัลติเวิร์ส">🧊 เต้าหู้นีออนมัลติเวิร์ส</option>
+                            <option value="เนื้อออสเตรเลียดาวอังคาร">🥩 เนื้อออสเตรเลียดาวอังคาร</option>
+                            <option value="ปลาแซลมอนไฮเปอร์สเปซ">🐟 ปลาแซลมอนไฮเปอร์สเปซ</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-cyber-pink uppercase font-orbitron block">2. ซอส / พลังงาน (Element)</label>
+                        <select id="synth-sauce" class="w-full bg-slate-900 border border-cyber-pink/50 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-cyber-pink">
+                            <option value="พริกมัลติเวิร์สเผ็ด 1000G">🌶️ พริกมัลติเวิร์สเผ็ด 1000G</option>
+                            <option value="ซอสดำแบล็กโฮล">🕳️ ซอสดำแบล็กโฮล</option>
+                            <option value="ผงแกงเขียวหวานดาวอังคาร">🌌 ผงแกงเขียวหวานดาวอังคาร</option>
+                            <option value="น้ำต้มยำบิ๊กแบง">💥 น้ำต้มยำบิ๊กแบง</option>
+                            <option value="ครีมวาซาบิสเปกตรัม">🧪 ครีมวาซาบิสเปกตรัม</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-cyber-lime uppercase font-orbitron block">3. ท็อปปิ้งอวกาศ (Topping)</label>
+                        <select id="synth-topping" class="w-full bg-slate-900 border border-cyber-lime/50 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-cyber-lime">
+                            <option value="ผงละอองดาวชิมเมอร์">✨ ผงละอองดาวชิมเมอร์</option>
+                            <option value="ไข่ดาวนีออนลาวา">🍳 ไข่ดาวนีออนลาวา</option>
+                            <option value="เยลลี่คริสตัลอวกาศ">💎 เยลลี่คริสตัลอวกาศ</option>
+                            <option value="ใบกะเพราไฮเปอร์สเปซ">🌿 ใบกะเพราไฮเปอร์สเปซ</option>
+                            <option value="เกล็ดทองคำควอนตัม">🪙 เกล็ดทองคำควอนตัม</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="synthesizeFood()" id="synth-btn" class="w-full md:w-auto px-10 py-4 rounded-2xl bg-gradient-to-r from-cyber-cyan via-cyber-pink to-cyber-lime text-slate-950 font-black font-orbitron text-base hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-cyber-pink/30 flex items-center justify-center gap-3 mx-auto">
+                    <i class="fa-solid fa-atom text-lg"></i> เริ่มสังเคราะห์อาหาร (SYNTHESIZE)
+                </button>
+
+                <div id="synth-result" class="hidden pt-6"></div>
+            </div>
+        </section>
+
+        <!-- MINI GAME 2: COSMIC WOK CATCH ARCADE -->
+        <section id="game-section" class="rounded-3xl bg-cyber-card border border-cyber-cyan/40 p-6 md:p-8 shadow-2xl relative">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
+                <div>
+                    <div class="inline-block px-3 py-1 rounded-full bg-cyber-cyan/20 border border-cyber-cyan text-cyber-cyan text-xs font-mono font-bold mb-2">
+                        <i class="fa-solid fa-gamepad"></i> MINI-GAME #2: ARCADE WOK CATCH
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-black font-orbitron text-white">
+                        Cosmic Wok Catch (รับส่วนลด 20%)
+                    </h2>
+                    <p class="text-slate-400 text-sm">เลื่อนกระทะนีออนเพื่อรับวัตถุดิบอวกาศ สะสมคะแนนครบ 100 คะแนน รับคูปองส่วนลด <code class="text-cyber-lime">COSMIC20</code> ทันที!</p>
+                </div>
+
+                <div class="flex items-center gap-4 bg-slate-900/90 px-5 py-3 rounded-2xl border border-slate-700">
+                    <div class="text-center">
+                        <div class="text-xs text-slate-400 font-mono">คะแนน</div>
+                        <div id="game-score" class="text-2xl font-black font-orbitron text-cyber-cyan">0</div>
+                    </div>
+                    <div class="h-8 w-[1px] bg-slate-700"></div>
+                    <button id="game-start-btn" onclick="startWokGame()" class="px-5 py-2.5 rounded-xl bg-cyber-lime text-slate-950 font-bold font-orbitron text-xs hover:brightness-110 active:scale-95 transition-all">
+                        <i class="fa-solid fa-play"></i> เริ่มเล่นเกม
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative w-full max-w-2xl mx-auto rounded-2xl overflow-hidden border-2 border-cyber-cyan/40 bg-slate-950 aspect-[16/9] shadow-inner flex items-center justify-center">
+                <canvas id="wokCanvas" class="w-full h-full block cursor-pointer"></canvas>
+                
+                <div id="game-overlay" class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center z-10">
+                    <i class="fa-solid fa-shuttle-space text-5xl text-cyber-cyan mb-4 animate-bounce"></i>
+                    <h3 class="text-xl font-bold font-orbitron text-white">พร้อมจับวัตถุดิบหลุดโลกหรือยัง?</h3>
+                    <p class="text-xs text-slate-300 max-w-sm mt-2 mb-6">
+                        ใช้นิ้วลาก หรือ เมาส์ หรือ ลูกศร <kbd class="px-1.5 py-0.5 bg-slate-800 rounded">←</kbd> <kbd class="px-1.5 py-0.5 bg-slate-800 rounded">→</kbd> เพื่อขยับกระทะ หลบขยะอวกาศ แล้วรับวัตถุดิบเรืองแสง!
+                    </p>
+                    <button onclick="startWokGame()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyber-cyan to-cyber-pink text-slate-950 font-bold font-orbitron text-sm shadow-lg shadow-cyber-cyan/30">
+                        <i class="fa-solid fa-play"></i> เริ่มเกมนับคะแนน
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="cyber-glass border-t border-slate-800 py-8 px-4 lg:px-8 mt-16 text-slate-400 text-xs">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            <div>
+                <p class="font-orbitron font-bold text-slate-200 text-sm">ครัวหลุดโลก | CRAZY COSMIC KITCHEN & CYBER PAYMENT</p>
+                <p class="mt-1">ระบบร้านอาหารตามสั่งดิจิทัลแห่งอนาคต รองรับ PromptPay, Cyber Card & Crypto Payment</p>
+            </div>
+            <div class="flex items-center gap-4 text-slate-400">
+                <span class="text-cyber-cyan"><i class="fa-solid fa-bolt"></i> Quantum Speed Delivery</span>
+                <span>•</span>
+                <span class="text-cyber-pink"><i class="fa-solid fa-shield-halved"></i> 256-Bit Encrypted Checkout</span>
+            </div>
+            <p>© 2099 Crazy Cosmic Kitchen. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+    <!-- MODAL 1: SHOPPING CART & SHIPPING FORM -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-cyber-card border border-cyber-cyan/50 rounded-3xl w-full max-w-lg p-6 space-y-5 shadow-2xl relative max-h-[90vh] flex flex-col">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 class="text-xl font-bold font-orbitron text-cyber-cyan flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping text-cyber-pink"></i> ตะกร้าอาหาร & ฟอร์มวาร์ปจัดส่ง
+                </h3>
+                <button onclick="toggleCartModal()" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div id="cart-items-container" class="overflow-y-auto space-y-2.5 flex-grow pr-1 max-h-48"></div>
+
+            <!-- Coupon Input -->
+            <div class="space-y-1.5 pt-2 border-t border-slate-800">
+                <label class="text-[11px] text-slate-400 font-mono block">คูปองส่วนลดส่วนเพิ่ม (ลองใช้ <code class="text-cyber-lime">COSMIC20</code>)</label>
+                <div class="flex gap-2">
+                    <input type="text" id="coupon-input" placeholder="ใส่มินิเกมคูปอง เช่น COSMIC20" class="flex-grow bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-100 uppercase font-mono focus:outline-none focus:border-cyber-cyan">
+                    <button onclick="applyCoupon()" class="px-4 py-1.5 bg-slate-800 border border-cyber-cyan/50 text-cyber-cyan rounded-xl text-xs font-bold hover:bg-cyber-cyan/20">
+                        ใช้งาน
+                    </button>
+                </div>
+            </div>
+
+            <!-- Detailed Price Breakdown -->
+            <div class="space-y-1 text-xs pt-2 border-t border-slate-800 font-mono">
+                <div class="flex justify-between text-slate-400">
+                    <span>ราคารวมเมนู:</span>
+                    <span id="cart-subtotal">0 ฿</span>
+                </div>
+                <div id="discount-row" class="flex justify-between text-cyber-pink hidden">
+                    <span>ส่วนลดคูปอง (20%):</span>
+                    <span id="cart-discount">-0 ฿</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                    <span>ค่าจัดส่งวาร์ปควอนตัม:</span>
+                    <span id="cart-shipping" class="text-cyber-lime">0 ฿ (โปรโมชัน)</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                    <span>VAT ควอนตัม (7%):</span>
+                    <span id="cart-vat">0 ฿</span>
+                </div>
+                <div class="flex justify-between text-base font-bold font-orbitron text-white pt-2 border-t border-slate-800">
+                    <span>ยอดชำระสุทธิ:</span>
+                    <span id="cart-total" class="text-cyber-cyan">0 ฿</span>
+                </div>
+            </div>
+
+            <!-- Go to Payment Button -->
+            <button onclick="openPaymentGatewayModal()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyber-cyan via-cyber-pink to-cyber-lime text-slate-950 font-black font-orbitron text-sm hover:opacity-90 transition-all shadow-lg shadow-cyber-cyan/20 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-credit-card"></i> ดำเนินการชำระเงิน (Proceed to Payment)
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL 2: CYBER PAYMENT GATEWAY MODAL (MULTI-CHANNEL) -->
+    <div id="payment-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="bg-cyber-card border-2 border-cyber-cyan rounded-3xl w-full max-w-2xl p-5 sm:p-7 space-y-5 shadow-2xl relative max-h-[92vh] flex flex-col overflow-hidden">
+            
+            <!-- Header -->
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-cyber-cyan/20 border border-cyber-cyan text-cyber-cyan flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold font-orbitron text-white">Cyber Payment Gateway 2099</h3>
+                        <p class="text-xs text-slate-400">เลือกช่องทางชำระเงินไซเบอร์ที่ปลอดภัยแบบ 256-Bit</p>
+                    </div>
+                </div>
+                <button onclick="closePaymentModal()" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Body with scroll -->
+            <div class="flex-grow overflow-y-auto space-y-5 pr-1">
+                
+                <!-- Delivery Info Inputs -->
+                <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-800 space-y-3">
+                    <h4 class="text-xs font-bold font-orbitron text-cyber-cyan flex items-center gap-1.5">
+                        <i class="fa-solid fa-location-dot"></i> ข้อมูลผู้รับ & พิกัดจัดส่งวาร์ป
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <label class="text-slate-400 mb-1 block">ชื่อผู้รับ / Cyber ID *</label>
+                            <input type="text" id="ship-name" value="กัปตัน อเล็กซ์ ควอนตัม" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-100 focus:outline-none focus:border-cyber-cyan font-mono">
+                        </div>
+                        <div>
+                            <label class="text-slate-400 mb-1 block">เบอร์โทรศัพท์สื่อสาร *</label>
+                            <input type="text" id="ship-phone" value="089-999-2099" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-100 focus:outline-none focus:border-cyber-cyan font-mono">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="text-slate-400 mb-1 block">พิกัดจัดส่งวาร์ป / ที่อยู่ *</label>
+                            <input type="text" id="ship-address" value="โดมไซเบอร์ นีโอกรุงเทพ, โซน 7 พิกัด 13.7563° N, 100.5018° E" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-100 focus:outline-none focus:border-cyber-cyan font-mono">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method Selector Tabs -->
+                <div class="space-y-3">
+                    <label class="text-xs font-bold font-orbitron text-slate-300 block">เลือกช่องทางการชำระเงิน:</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        <button onclick="selectPaymentTab('promptpay')" id="paytab-promptpay" class="pay-tab p-3 rounded-2xl border border-cyber-lime bg-cyber-lime/10 text-cyber-lime font-mono text-xs flex flex-col items-center gap-1.5 transition-all">
+                            <i class="fa-solid fa-qrcode text-xl"></i>
+                            <span class="font-bold">PromptPay QR</span>
+                        </button>
+                        <button onclick="selectPaymentTab('card')" id="paytab-card" class="pay-tab p-3 rounded-2xl border border-slate-800 bg-slate-900 text-slate-400 font-mono text-xs flex flex-col items-center gap-1.5 transition-all">
+                            <i class="fa-solid fa-credit-card text-xl"></i>
+                            <span>Cyber Card</span>
+                        </button>
+                        <button onclick="selectPaymentTab('crypto')" id="paytab-crypto" class="pay-tab p-3 rounded-2xl border border-slate-800 bg-slate-900 text-slate-400 font-mono text-xs flex flex-col items-center gap-1.5 transition-all">
+                            <i class="fa-brands fa-ethereum text-xl"></i>
+                            <span>Crypto Wallet</span>
+                        </button>
+                        <button onclick="selectPaymentTab('warppay')" id="paytab-warppay" class="pay-tab p-3 rounded-2xl border border-slate-800 bg-slate-900 text-slate-400 font-mono text-xs flex flex-col items-center gap-1.5 transition-all">
+                            <i class="fa-solid fa-bolt text-xl"></i>
+                            <span>Warp Pay</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TAB 1: PROMPTPAY QR CONTENT -->
+                <div id="paycontent-promptpay" class="pay-content space-y-4 bg-slate-900/90 p-5 rounded-2xl border border-cyber-lime/40 text-center">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-lime/20 text-cyber-lime text-xs font-mono">
+                        <i class="fa-solid fa-qrcode"></i> Thai QR PromptPay Cyber Dynamic
+                    </div>
+                    
+                    <!-- Simulated Dynamic QR Canvas/Graphic -->
+                    <div class="relative w-48 h-48 mx-auto bg-white p-3 rounded-2xl shadow-xl flex flex-col items-center justify-center border-4 border-cyber-lime">
+                        <img id="promptpay-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=PROMPTPAY_COSMIC_KITCHEN_2099" alt="PromptPay QR" class="w-full h-full object-contain">
+                        <div class="absolute inset-0 bg-slate-950/10 pointer-events-none"></div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="text-xs text-slate-400 font-mono">ยอดเงินที่ต้องสแกนจ่าย:</div>
+                        <div id="promptpay-amount" class="text-2xl font-black font-orbitron text-cyber-lime">0 ฿</div>
+                        <div class="text-[11px] text-slate-400 font-mono flex items-center justify-center gap-1.5 pt-1">
+                            <i class="fa-regular fa-clock text-cyber-gold"></i> รหัส QR หมดอายุใน: <span id="pp-timer" class="text-cyber-gold font-bold">14:59</span> นาที
+                        </div>
+                    </div>
+
+                    <!-- Instant Simulate QR Scan Button -->
+                    <button onclick="simulateScanAndPay()" class="w-full py-2.5 rounded-xl bg-cyber-lime text-slate-950 font-bold font-orbitron text-xs hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-cyber-lime/20">
+                        <i class="fa-solid fa-mobile-screen-button"></i> จำลองการสแกนจ่ายสำเร็จ (Simulate QR Payment)
+                    </button>
+                </div>
+
+                <!-- TAB 2: CYBER CREDIT CARD CONTENT -->
+                <div id="paycontent-card" class="pay-content hidden space-y-4 bg-slate-900/90 p-5 rounded-2xl border border-cyber-cyan/40">
+                    <!-- Interactive Visual Cyber Card -->
+                    <div class="w-full h-44 rounded-2xl bg-gradient-to-tr from-slate-950 via-cyber-card to-cyan-950 border border-cyber-cyan p-4 flex flex-col justify-between shadow-2xl relative overflow-hidden neon-glow-cyan">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-orbitron text-cyber-cyan font-bold tracking-wider">CYBER CARD 2099</span>
+                            <i class="fa-solid fa-wifi text-cyber-cyan text-sm rotate-90"></i>
+                        </div>
+                        <div class="text-lg sm:text-xl font-mono tracking-widest text-white text-glow-cyan" id="card-preview-num">
+                            •••• •••• •••• ••••
+                        </div>
+                        <div class="flex justify-between items-end text-[10px] font-mono">
+                            <div>
+                                <span class="text-slate-400 block">CARD HOLDER</span>
+                                <span class="text-cyber-cyan uppercase font-bold text-xs" id="card-preview-name">ALEX QUANTUM</span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 block">EXPIRES</span>
+                                <span class="text-cyber-cyan font-bold text-xs" id="card-preview-exp">12/29</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Inputs -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="sm:col-span-2">
+                            <label class="text-slate-400 mb-1 block">หมายเลขบัตร 16 หลัก *</label>
+                            <input type="text" id="input-card-num" placeholder="4532 8899 0011 2099" maxlength="19" oninput="updateCardPreview()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-100 font-mono focus:outline-none focus:border-cyber-cyan">
+                        </div>
+                        <div>
+                            <label class="text-slate-400 mb-1 block">ชื่อผู้ถือบัตร *</label>
+                            <input type="text" id="input-card-name" placeholder="ALEX QUANTUM" oninput="updateCardPreview()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-100 font-mono uppercase focus:outline-none focus:border-cyber-cyan">
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="text-slate-400 mb-1 block">หมดอายุ *</label>
+                                <input type="text" id="input-card-exp" placeholder="12/29" maxlength="5" oninput="updateCardPreview()" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-100 font-mono focus:outline-none focus:border-cyber-cyan">
+                            </div>
+                            <div>
+                                <label class="text-slate-400 mb-1 block">CVV *</label>
+                                <input type="password" id="input-card-cvv" placeholder="999" maxlength="3" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-slate-100 font-mono focus:outline-none focus:border-cyber-cyan">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 3: CRYPTO WALLET CONTENT -->
+                <div id="paycontent-crypto" class="pay-content hidden space-y-4 bg-slate-900/90 p-5 rounded-2xl border border-cyber-purple/40">
+                    <div class="space-y-3">
+                        <label class="text-xs text-slate-400 block font-mono">เลือกเหรียญคริปโตอวกาศ:</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button onclick="selectCrypto('CCK')" id="cryptobtn-CCK" class="crypto-btn p-3 rounded-xl border border-cyber-purple bg-cyber-purple/20 text-white font-mono text-xs flex flex-col items-center">
+                                <span class="font-bold text-cyber-purple">$CCK</span>
+                                <span class="text-[10px] text-slate-400">Cosmic Coin</span>
+                            </button>
+                            <button onclick="selectCrypto('ETH')" id="cryptobtn-ETH" class="crypto-btn p-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-400 font-mono text-xs flex flex-col items-center">
+                                <span class="font-bold">ETH</span>
+                                <span class="text-[10px] text-slate-400">Ethereum</span>
+                            </button>
+                            <button onclick="selectCrypto('SOL')" id="cryptobtn-SOL" class="crypto-btn p-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-400 font-mono text-xs flex flex-col items-center">
+                                <span class="font-bold">SOL</span>
+                                <span class="text-[10px] text-slate-400">Solana</span>
+                            </button>
+                        </div>
+
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs space-y-2">
+                            <div class="flex justify-between text-slate-400">
+                                <span>อัตราแลกเปลี่ยนแปลงค่า:</span>
+                                <span id="crypto-converted-amount" class="text-cyber-purple font-bold">0.00 CCK</span>
+                            </div>
+                            <div class="flex justify-between text-slate-400 text-[10px]">
+                                <span>Cyber Wallet Target:</span>
+                                <span class="text-slate-300">0x99A...CCK2099</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: WARP PAY CONTENT -->
+                <div id="paycontent-warppay" class="pay-content hidden space-y-4 bg-slate-900/90 p-5 rounded-2xl border border-cyber-pink/40 text-center">
+                    <i class="fa-solid fa-bolt text-4xl text-cyber-pink animate-pulse"></i>
+                    <h4 class="text-sm font-bold font-orbitron text-white">Warp Pay Instant Wallet</h4>
+                    <p class="text-xs text-slate-400">กระเป๋าเงินดิจิทัลไร้สาย ชำระเงินทันทีผ่านสัญญาณประสาทไซเบอร์</p>
+                    <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs font-mono text-slate-300">
+                        เชื่อมต่อกระเป๋าเงิน: <span class="text-cyber-pink">User_Warp_Wallet_#8812</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Action Button -->
+            <div class="border-t border-slate-800 pt-3">
+                <button onclick="executePaymentProcess()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyber-cyan via-cyber-pink to-cyber-lime text-slate-950 font-black font-orbitron text-sm hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-cyber-cyan/30 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-lock"></i> ยืนยันชำระเงิน <span id="pay-button-amount">0 ฿</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: PAYMENT PROCESSING OVERLAY -->
+    <div id="processing-modal" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-xl hidden flex items-center justify-center p-4">
+        <div class="text-center space-y-6 max-w-sm">
+            <div class="relative w-28 h-28 mx-auto flex items-center justify-center">
+                <div class="absolute inset-0 border-4 border-cyber-cyan/20 border-t-cyber-cyan rounded-full animate-spin"></div>
+                <div class="absolute inset-2 border-4 border-cyber-pink/20 border-b-cyber-pink rounded-full animate-spin" style="animation-duration: 1.5s;"></div>
+                <i class="fa-solid fa-dna text-3xl text-cyber-lime animate-pulse"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-bold font-orbitron text-white">กำลังยืนยันโหนดชำระเงินไซเบอร์...</h3>
+                <p class="text-xs text-slate-400 font-mono">กำลังสแกน Bio-Metric & ถอดรหัสธุรกรรมบล็อกเชนควอนตัม</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: HOLOGRAPHIC RECEIPT & TRACKING MODAL -->
+    <div id="receipt-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4">
+        <div class="holo-receipt rounded-3xl w-full max-w-md p-6 space-y-5 shadow-2xl relative text-center max-h-[92vh] flex flex-col overflow-hidden">
+            
+            <div class="overflow-y-auto space-y-4 pr-1">
+                <div class="w-14 h-14 rounded-full bg-cyber-lime/20 border border-cyber-lime text-cyber-lime flex items-center justify-center text-2xl mx-auto animate-bounce">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-cyber-lime/20 border border-cyber-lime text-cyber-lime text-[10px] font-mono font-bold uppercase">
+                        PAID • ชำระเงินสำเร็จแล้ว
+                    </span>
+                    <h3 class="text-2xl font-black font-orbitron text-white mt-2">ใบเสร็จสั่งซื้ออาหาร</h3>
+                    <p class="text-xs text-slate-400 font-mono" id="receipt-order-id">#CCK-000000</p>
+                </div>
+
+                <!-- Itemized Breakdown -->
+                <div id="receipt-details" class="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 text-left font-mono text-xs space-y-2 text-slate-300"></div>
+
+                <!-- Delivery Tracking Timeline -->
+                <div class="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-3 text-left">
+                    <h4 class="text-xs font-bold font-orbitron text-cyber-cyan flex items-center gap-1.5">
+                        <i class="fa-solid fa-truck-fast"></i> สถานะการจัดส่งวาร์ปเรียลไทม์
+                    </h4>
+                    <div class="space-y-2 text-[11px] font-mono">
+                        <div class="flex items-center gap-2 text-cyber-lime">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>1. ยืนยันคำสั่งซื้อ & ชำระเงินเรียบร้อย</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-cyber-cyan animate-pulse">
+                            <i class="fa-solid fa-spinner animate-spin"></i>
+                            <span>2. กำลังสังเคราะห์โมเลกุลอาหารในครัว</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-slate-500">
+                            <i class="fa-regular fa-circle"></i>
+                            <span>3. เปิดพอร์ทัลวาร์ปจัดส่งแบบควอนตัม</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-slate-500">
+                            <i class="fa-regular fa-circle"></i>
+                            <span>4. ส่งถึงพิกัดเป้าหมาย (คาดการณ์ 3.14 วินาที)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Receipt Actions -->
+            <div class="grid grid-cols-2 gap-3 border-t border-slate-800 pt-3">
+                <button onclick="printReceipt()" class="py-2.5 rounded-xl bg-slate-800 border border-cyber-cyan text-cyber-cyan font-bold font-orbitron text-xs hover:bg-cyber-cyan/20">
+                    <i class="fa-solid fa-print"></i> พิมพ์ใบเสร็จ
+                </button>
+                <button onclick="closeReceiptModal()" class="py-2.5 rounded-xl bg-cyber-lime text-slate-950 font-bold font-orbitron text-xs hover:brightness-110">
+                    <i class="fa-solid fa-house"></i> สั่งซื้อเพิ่ม / กลับหน้าหลัก
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: 15-MINUTE BRIEF CONCEPT PITCH DECK -->
+    <div id="pitch-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-cyber-card border-2 border-cyber-purple rounded-3xl w-full max-w-4xl p-4 sm:p-8 space-y-6 shadow-2xl relative max-h-[95vh] flex flex-col overflow-hidden">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div class="flex items-center gap-3">
+                    <span class="p-2 rounded-xl bg-cyber-purple/20 text-cyber-purple font-mono font-bold text-xs">PITCH DECK</span>
+                    <div>
+                        <h3 class="text-lg sm:text-2xl font-black font-orbitron text-white">Brief Concept & Strategy (15-Min Presentation)</h3>
+                        <p class="text-xs text-slate-400">นำเสนอแนวคิดร้าน "ครัวหลุดโลก" ตาม Requirement สำหรับลูกค้า</p>
+                    </div>
+                </div>
+                <button onclick="closePitchModal()" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="flex-grow overflow-y-auto space-y-6 pr-2">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
+                    <button onclick="showSlide(1)" id="slide-tab-1" class="slide-tab px-3 py-2 rounded-xl border border-slate-700 bg-slate-900 text-xs text-slate-300 font-mono text-center hover:border-cyber-purple">1. Executive Summary</button>
+                    <button onclick="showSlide(2)" id="slide-tab-2" class="slide-tab px-3 py-2 rounded-xl border border-slate-700 bg-slate-900 text-xs text-slate-300 font-mono text-center hover:border-cyber-purple">2. Brand & Naming</button>
+                    <button onclick="showSlide(3)" id="slide-tab-3" class="slide-tab px-3 py-2 rounded-xl border border-slate-700 bg-slate-900 text-xs text-slate-300 font-mono text-center hover:border-cyber-purple">3. Target & Market</button>
+                    <button onclick="showSlide(4)" id="slide-tab-4" class="slide-tab px-3 py-2 rounded-xl border border-slate-700 bg-slate-900 text-xs text-slate-300 font-mono text-center hover:border-cyber-purple">4. AI & Tech Role</button>
+                    <button onclick="showSlide(5)" id="slide-tab-5" class="slide-tab px-3 py-2 rounded-xl border border-slate-700 bg-slate-900 text-xs text-slate-300 font-mono text-center hover:border-cyber-purple">5. UX/UI Strategy</button>
+                    <button onclick="showSlide(6)" id="slide-tab-6" class="slide-tab px-3 py-2 rounded-xl border border-slate-700 bg-slate-900 text-xs text-slate-300 font-mono text-center hover:border-cyber-purple">6. Digital Marketing</button>
+                </div>
+
+                <div id="slide-content-area" class="bg-slate-900/90 rounded-2xl border border-slate-800 p-6 space-y-4"></div>
+            </div>
+
+            <div class="flex items-center justify-between border-t border-slate-800 pt-4">
+                <span id="slide-indicator" class="text-xs font-mono text-slate-400">Slide 1 of 6</span>
+                <div class="flex items-center gap-2">
+                    <button onclick="prevSlide()" class="px-4 py-2 rounded-xl bg-slate-800 text-xs text-slate-200 hover:bg-slate-700 font-mono">
+                        <i class="fa-solid fa-chevron-left"></i> ย้อนกลับ
+                    </button>
+                    <button onclick="nextSlide()" class="px-4 py-2 rounded-xl bg-cyber-purple text-xs text-white hover:bg-purple-600 font-mono font-bold">
+                        ถัดไป <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // MENU DATA (10 COMPLETE DISHES)
+        const MENU_DATA = [
+            {
+                id: 1,
+                name: "ข้าวผัดหลุมดำ",
+                enName: "Black Hole Fried Rice",
+                category: "protein",
+                price: 280,
+                badge: "🕳️ Black Hole Spec",
+                color: "cyber-pink",
+                icon: "🍚",
+                ingredients: ["ข้าวหอมมะลิดำแบล็กโฮล", "เนื้อหมักแมกมา", "ซอสต้มยำพลาสมา", "ไข่ดาวมัลติเวิร์ส"],
+                nutrition: { cal: "620 kcal", protein: "38g", carb: "65g", fat: "18g" },
+                buff: "🌌 ดึงดูดพลังงานรอบตัว +60%",
+                desc: "ข้าวผัดสีดำดุจความมืดของหลุมดำ เข้มข้น หอมกลิ่นกระทะควอนตัม ผัดพร้อมเนื้อหมักแมกมารสจัดจ้าน"
+            },
+            {
+                id: 2,
+                name: "ต้มยำนิวเคลียร์นีออน",
+                enName: "Neon Nuclear Tom Yum",
+                category: "spicy",
+                price: 390,
+                badge: "💥 Spicy 1000G",
+                color: "cyber-cyan",
+                icon: "🍲",
+                ingredients: ["กุ้งมังกรเนบิวลา", "พริกนิวเคลียร์นีออน", "น้ำต้มยำบิ๊กแบง", "เห็ดหลินจืออวกาศ"],
+                nutrition: { cal: "380 kcal", protein: "42g", carb: "15g", fat: "12g" },
+                buff: "🔥 ระเบิดพลาสมาเผาผลาญไขมัน",
+                desc: "ต้มยำน้ำข้นเรืองแสง รสชาติเผ็ดแซ่บระดับระเบิดนิวเคลียร์ กุ้งมังกรเนบิวลาเนื้อแน่นหวานฉ่ำ"
+            },
+            {
+                id: 3,
+                name: "ผัดไทยวาร์ปสปีด",
+                enName: "Warp Speed Pad Thai",
+                category: "protein",
+                price: 220,
+                badge: "⚡ High Velocity",
+                color: "cyber-lime",
+                icon: "🍜",
+                ingredients: ["เส้นจันทน์ไฟเบอร์ออปติก", "กุ้งสดไฮเปอร์สเปซ", "ซอสมะขามควอนตัม", "ถั่วนีออนบด"],
+                nutrition: { cal: "540 kcal", protein: "30g", carb: "68g", fat: "16g" },
+                buff: "⏩ เร่งสปีดการตอบสนองสมอง +50%",
+                desc: "เส้นผัดไทยเหนียวนุ่มเรืองแสง ผัดด้วยความเร็ววาร์ปสปีด รสสัมผัสกลมกล่อมสามรสพอดีเป๊ะ"
+            },
+            {
+                id: 4,
+                name: "สเต๊กเนื้อแอนติแมตเตอร์",
+                enName: "Anti-Matter Beef Steak",
+                category: "protein",
+                price: 590,
+                badge: "🥩 Cosmic Prime",
+                color: "cyber-purple",
+                icon: "🥩",
+                ingredients: ["เนื้อวัวดาวอังคาร A5", "เนยละอองดาวชิมเมอร์", "ซอสพริกไทยดำแบล็กโฮล", "มันฝรั่งพิกเซล"],
+                nutrition: { cal: "750 kcal", protein: "65g", carb: "8g", fat: "48g" },
+                buff: "🛡️ สร้างเกราะพลังงานชีวภาพ 100%",
+                desc: "สเต๊กเนื้อวัวบ่มในสภาวะศูนย์สูญญากาศ นุ่มแทบละลายในปาก ราดซอสพริกไทยดำความต้านทานสูง"
+            },
+            {
+                id: 5,
+                name: "กะเพราแกแลกซี่ลิขิต",
+                enName: "Galactic Basil Kra-Pao",
+                category: "spicy",
+                price: 190,
+                badge: "🌶️ Overdrive",
+                color: "cyber-pink",
+                icon: "🥓",
+                ingredients: ["หมูกรอบสังเคราะห์ควอนตัม", "ใบกะเพราสกัดเข้มข้น", "พริกชี้ฟ้านีออน", "ไข่ดาวลาวาเรืองแสง"],
+                nutrition: { cal: "590 kcal", protein: "35g", carb: "42g", fat: "24g" },
+                buff: "⚡ กระตุ้นอะดรีนาลีนระดับมัลติเวิร์ส",
+                desc: "เมนูยอดฮิตแห่งจักรวาล หมูกรอบกรุบกรอบข้ามมิติเวลา ผัดกับกะเพราสกัดเข้มข้นเผ็ดร้อนสะใจ"
+            },
+            {
+                id: 6,
+                name: "สลัดเนบิวลาเพื่อสุขภาพ",
+                enName: "Nebula Zero-Cal Salad",
+                category: "health",
+                price: 210,
+                badge: "🥗 Zero Calorie",
+                color: "cyber-lime",
+                icon: "🥗",
+                ingredients: ["ผักสลัดคริสตัลเรืองแสง", "มะเขือเทศสเปกตรัม", "น้ำดรสซิ่งซีซาร์อวกาศ", "เมล็ดทานตะวันดาวพฤหัส"],
+                nutrition: { cal: "90 kcal", protein: "8g", carb: "12g", fat: "1g" },
+                buff: "🌿 ล้างพิษดิจิทัล & ดีท็อกซ์เซลล์",
+                desc: "สลัดผักไฮโดรโพนิกส์ปลูกบนสถานีอวกาศ กรอบ อุดมไปด้วยวิตามินและสารต้านอนุมูลอิสระ"
+            },
+            {
+                id: 7,
+                name: "ราเมนรูหนอนเวลามิติ",
+                enName: "Wormhole Time-Ramen",
+                category: "health",
+                price: 320,
+                badge: "🌀 Time Shift",
+                color: "cyber-cyan",
+                icon: "🍜",
+                ingredients: ["เส้นราเมนบิดเวลามิติ", "ซุปกระดูกเคี่ยว 100 ปี", "หมูชาชูควอนตัม", "ไข่มะตอยสเปกตรัม"],
+                nutrition: { cal: "390 kcal", protein: "22g", carb: "55g", fat: "9g" },
+                buff: "⏳ ย้อนวัยเซลล์ & เพิ่มสมาธิ",
+                desc: "น้ำซุปเคี่ยวข้ามมิติเวลานานนับร้อยปี เส้นราเมนนุ่มหนืด ดื่มต่ำรสชาติกลมกล่อมลึกซึ้ง"
+            },
+            {
+                id: 8,
+                name: "ซูชิควอนตัมไดเมนชัน",
+                enName: "Quantum Dimension Sushi Set",
+                category: "protein",
+                price: 450,
+                badge: "🍣 Quantum Raw",
+                color: "cyber-purple",
+                icon: "🍣",
+                ingredients: ["แซลมอนไฮเปอร์สเปซ", "ทูน่าแบล็กโฮล", "ไข่ปลาคริสตัลอวกาศ", "วาซาบิสเปกตรัม"],
+                nutrition: { cal: "480 kcal", protein: "45g", carb: "50g", fat: "10g" },
+                buff: "🧠 เพิ่มความจำและความเร็วการคิด",
+                desc: "เซ็ตซูชิวัตถุดิบสดใหม่ส่งตรงจากมหาสมุทรอวกาศ คำใหญ่เต็มคำ พร้อมวาซาบิจี๊ดจ๊าดระดับควอนตัม"
+            },
+            {
+                id: 9,
+                name: "บิงซูดาวอังคารเรืองแสง",
+                enName: "Martian Ice Bingsu",
+                category: "dessert",
+                price: 180,
+                badge: "🍧 Sub-Zero",
+                color: "cyber-cyan",
+                icon: "🍧",
+                ingredients: ["เกล็ดหิมะดรายไอซ์นีออน", "ไซรัปสตรอว์เบอร์รีดาวอังคาร", "วิปครีมสเปซ", "เยลลี่คริสตัล"],
+                nutrition: { cal: "260 kcal", protein: "5g", carb: "48g", fat: "5g" },
+                buff: "❄️ คลายความร้อนในสมองทันที",
+                desc: "บิงซูนุ่มละมุนระดับหิมะดาวอังคาร หอมหวานฉ่ำไซรัปเรืองแสง ช่วยดับร้อนและผ่อนคลายสมอง"
+            },
+            {
+                id: 10,
+                name: "เค้กช็อกโกแลตสิงสู่จิต",
+                enName: "Mind-Control Lava Cake",
+                category: "dessert",
+                price: 160,
+                badge: "🍫 Dark Matter",
+                color: "cyber-pink",
+                icon: "🍰",
+                ingredients: ["ช็อกโกแลตดำแอนติแมตเตอร์", "เนยสดลาวาเรืองแสง", "ผงละอองดาว", "ไอศกรีมวานิลลาไซเบอร์"],
+                nutrition: { cal: "340 kcal", protein: "6g", carb: "42g", fat: "18g" },
+                buff: "✨ ปล่อยสารความสุข Dopamine 200%",
+                desc: "เค้กช็อกโกแลตลาวาเข้มข้น ไหลเยิ้ม ไส้ช็อกโกแลตสะกดจิตให้คุณหลงใหลตั้งแต่คำแรกที่ทาน"
+            }
+        ];
+
+        // WEB AUDIO API SOUND SYSTEM
+        let soundEnabled = true;
+        let audioCtx = null;
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                const now = audioCtx.currentTime;
+
+                if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(600, now);
+                    osc.frequency.exponentialRampToValueAtTime(200, now + 0.08);
+                    gain.gain.setValueAtTime(0.15, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.08);
+                    osc.start(now); osc.stop(now + 0.08);
+                } else if (type === 'synth') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(200, now);
+                    osc.frequency.linearRampToValueAtTime(800, now + 0.3);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now); osc.stop(now + 0.3);
+                } else if (type === 'catch') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.05);
+                    gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.12);
+                    osc.start(now); osc.stop(now + 0.12);
+                } else if (type === 'success') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(440, now);
+                    osc.frequency.setValueAtTime(880, now + 0.1);
+                    gain.gain.setValueAtTime(0.25, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now); osc.stop(now + 0.3);
+                }
+            } catch (e) {
+                console.log("Audio not supported or blocked");
+            }
+        }
+
+        function toggleAudio() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('sfx-btn');
+            if (soundEnabled) {
+                btn.innerHTML = '<i class="fa-solid fa-volume-high text-sm"></i>';
+                btn.classList.remove('text-red-400');
+                playSound('click');
+            } else {
+                btn.innerHTML = '<i class="fa-solid fa-volume-xmark text-sm"></i>';
+                btn.classList.add('text-red-400');
+            }
+        }
+
+        // CYBER TOAST NOTIFICATIONS
+        function showToast(title, message, icon = 'fa-circle-info', color = 'cyber-cyan') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `pointer-events-auto p-4 rounded-2xl bg-slate-900 border border-${color} text-slate-100 shadow-2xl flex items-center gap-3 transform transition-all duration-300 translate-y-10 opacity-0 max-w-sm`;
+            toast.innerHTML = `
+                <div class="w-9 h-9 rounded-xl bg-${color}/20 text-${color} flex items-center justify-center text-lg flex-shrink-0">
+                    <i class="fa-solid ${icon}"></i>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold font-orbitron text-white">${title}</h4>
+                    <p class="text-[11px] text-slate-300 mt-0.5">${message}</p>
+                </div>
+            `;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 50);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // STATE VARIABLES
+        let cart = [];
+        let activeCategory = 'all';
+        let appliedCoupon = null;
+        let selectedPaymentMethod = 'promptpay';
+        let selectedCryptoToken = 'CCK';
+        let promptPayTimer = 899; // 15 mins in seconds
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderMenuSlider();
+            initPitchSlides();
+            initCanvasGame();
+            startPromptPayTimer();
+        });
+
+        // CATEGORY & SLIDER LOGIC
+        function renderCategories() {
+            const categories = [
+                { id: 'all', label: 'ทั้งหมด (10)' },
+                { id: 'protein', label: 'โปรตีนสูง' },
+                { id: 'spicy', label: 'เผ็ดหลุดโลก' },
+                { id: 'health', label: 'สายสุขภาพ' },
+                { id: 'dessert', label: 'ของหวานไซเบอร์' }
+            ];
+
+            const container = document.getElementById('category-filters');
+            container.innerHTML = categories.map(cat => `
+                <button onclick="setCategory('${cat.id}')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold font-mono transition-all ${
+                    activeCategory === cat.id 
+                    ? 'bg-cyber-cyan text-slate-950 font-bold shadow-lg shadow-cyber-cyan/30' 
+                    : 'bg-slate-900 border border-slate-700 text-slate-300 hover:border-cyber-cyan'
+                }">
+                    ${cat.label}
+                </button>
+            `).join('');
+        }
+
+        function setCategory(catId) {
+            playSound('click');
+            activeCategory = catId;
+            renderCategories();
+            renderMenuSlider();
+            const slider = document.getElementById('menu-slider');
+            slider.scrollTo({ left: 0, behavior: 'smooth' });
+        }
+
+        function renderMenuSlider() {
+            const slider = document.getElementById('menu-slider');
+            const items = activeCategory === 'all' 
+                ? MENU_DATA 
+                : MENU_DATA.filter(item => item.category === activeCategory);
+
+            slider.innerHTML = items.map(item => `
+                <div class="snap-center flex-shrink-0 w-[290px] sm:w-[320px] rounded-2xl bg-cyber-card border border-slate-800 hover:border-${item.color} p-5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl group relative overflow-hidden">
+                    <div class="space-y-3">
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="text-4xl group-hover:scale-125 transition-transform duration-300 inline-block">${item.icon}</span>
+                            <span class="px-2.5 py-1 rounded-full bg-slate-900 border border-${item.color} text-${item.color} text-[10px] font-mono font-bold">
+                                ${item.badge}
+                            </span>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-cyber-cyan transition-colors">${item.name}</h3>
+                            <p class="text-xs text-slate-400 font-mono">${item.enName}</p>
+                        </div>
+
+                        <p class="text-xs text-slate-300 line-clamp-2">${item.desc}</p>
+
+                        <div class="space-y-1 pt-2 border-t border-slate-800">
+                            <div class="text-[10px] text-cyber-cyan font-mono font-bold">วัตถุดิบหลุดโลก:</div>
+                            <div class="flex flex-wrap gap-1">
+                                ${item.ingredients.map(ing => `
+                                    <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] text-slate-300">${ing}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 text-[10px] font-mono space-y-1">
+                            <div class="flex justify-between text-slate-400">
+                                <span>พลังงาน: ${item.nutrition.cal}</span>
+                                <span>P:${item.nutrition.protein} C:${item.nutrition.carb}</span>
+                            </div>
+                            <div class="text-cyber-lime font-bold truncate">${item.buff}</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-4 mt-4 border-t border-slate-800">
+                        <div>
+                            <span class="text-xs text-slate-400 block font-mono">ราคา</span>
+                            <span class="text-xl font-black font-orbitron text-cyber-cyan">${item.price} ฿</span>
+                        </div>
+                        <button onclick="addToCart(${item.id})" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-cyber-cyan hover:text-slate-950 border border-cyber-cyan/50 text-cyber-cyan text-xs font-bold transition-all flex items-center gap-1.5 active:scale-95">
+                            <i class="fa-solid fa-plus"></i> ลงตะกร้า
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            updateDots(items.length);
+        }
+
+        function scrollMenuSlider(direction) {
+            playSound('click');
+            const slider = document.getElementById('menu-slider');
+            slider.scrollBy({ left: direction * 320, behavior: 'smooth' });
+        }
+
+        function updateDots(totalItems) {
+            const dotsContainer = document.getElementById('menu-dots');
+            dotsContainer.innerHTML = Array.from({ length: Math.min(totalItems, 10) }).map((_, i) => `
+                <div class="w-2 h-2 rounded-full bg-slate-700 transition-all cursor-pointer hover:bg-cyber-cyan" onclick="scrollToSlideIndex(${i})"></div>
+            `).join('');
+        }
+
+        function scrollToSlideIndex(index) {
+            playSound('click');
+            const slider = document.getElementById('menu-slider');
+            slider.scrollTo({ left: index * 320, behavior: 'smooth' });
+        }
+
+        // CART OPERATIONS
+        function addToCart(itemId, customObj = null) {
+            playSound('click');
+            let itemToAdd = customObj ? customObj : MENU_DATA.find(i => i.id === itemId);
+
+            const existing = cart.find(i => i.id === itemToAdd.id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...itemToAdd, qty: 1 });
+            }
+
+            updateCartUI();
+            showToast('ลงตะกร้าเรียบร้อย', `เพิ่ม "${itemToAdd.name}" เข้าสู่ตะกร้าแล้ว`, 'fa-cart-plus', 'cyber-cyan');
+        }
+
+        function updateCartUI() {
+            const countEl = document.getElementById('cart-count');
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            countEl.innerText = totalQty;
+
+            const container = document.getElementById('cart-items-container');
+            if (cart.length === 0) {
+                container.innerHTML = `<div class="text-center py-6 text-slate-500 font-mono text-xs">ไม่มีรายการอาหารในตะกร้า</div>`;
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">${item.icon || '🛸'}</span>
+                            <div>
+                                <div class="font-bold text-white">${item.name}</div>
+                                <div class="text-cyber-cyan font-mono">${item.price} ฿ / จาน</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded bg-slate-800 text-slate-300 flex items-center justify-center font-bold hover:bg-slate-700">-</button>
+                            <span class="font-mono font-bold text-white w-4 text-center">${item.qty}</span>
+                            <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded bg-slate-800 text-slate-300 flex items-center justify-center font-bold hover:bg-slate-700">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            calculateCartTotal();
+        }
+
+        function changeQty(id, delta) {
+            playSound('click');
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+            }
+            updateCartUI();
+        }
+
+        function calculateCartTotal() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            let discount = 0;
+
+            if (appliedCoupon === 'COSMIC20') {
+                discount = Math.round(subtotal * 0.2);
+            }
+
+            const afterDiscount = subtotal - discount;
+            const vat = Math.round(afterDiscount * 0.07);
+            const shipping = 0; // Free Warp promo
+            const total = Math.max(0, afterDiscount + vat + shipping);
+
+            document.getElementById('cart-subtotal').innerText = `${subtotal} ฿`;
+            
+            if (discount > 0) {
+                document.getElementById('discount-row').classList.remove('hidden');
+                document.getElementById('cart-discount').innerText = `-${discount} ฿`;
+            } else {
+                document.getElementById('discount-row').classList.add('hidden');
+            }
+
+            document.getElementById('cart-vat').innerText = `${vat} ฿`;
+            document.getElementById('cart-total').innerText = `${total} ฿`;
+            document.getElementById('pay-button-amount').innerText = `${total} ฿`;
+            document.getElementById('promptpay-amount').innerText = `${total} ฿`;
+
+            updateCryptoAmount(total);
+        }
+
+        function toggleCartModal() {
+            playSound('click');
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function applyCoupon() {
+            const input = document.getElementById('coupon-input').value.trim().toUpperCase();
+            if (input === 'COSMIC20') {
+                appliedCoupon = 'COSMIC20';
+                playSound('success');
+                calculateCartTotal();
+                showToast('ใช้คูปองสำเร็จ', 'ได้รับส่วนลด 20% จากมินิเกมเรียบร้อย', 'fa-ticket', 'cyber-lime');
+            } else {
+                playSound('click');
+                showToast('คูปองไม่ถูกต้อง', 'กรุณาตรวจสอบรหัสคูปองอีกครั้ง', 'fa-circle-xmark', 'cyber-pink');
+            }
+        }
+
+        // PAYMENT GATEWAY MODAL LOGIC
+        function openPaymentGatewayModal() {
+            if (cart.length === 0) {
+                showToast('ตะกร้าว่างเปล่า', 'กรุณาเลือกรายการอาหารก่อนทำการชำระเงิน', 'fa-basket-shopping', 'cyber-pink');
+                return;
+            }
+            playSound('click');
+            toggleCartModal();
+            document.getElementById('payment-modal').classList.remove('hidden');
+            selectPaymentTab(selectedPaymentMethod);
+        }
+
+        function closePaymentModal() {
+            playSound('click');
+            document.getElementById('payment-modal').classList.add('hidden');
+        }
+
+        function selectPaymentTab(tabName) {
+            playSound('click');
+            selectedPaymentMethod = tabName;
+
+            // Reset tab button states
+            document.querySelectorAll('.pay-tab').forEach(tab => {
+                tab.classList.remove('border-cyber-lime', 'bg-cyber-lime/10', 'text-cyber-lime', 'border-cyber-cyan', 'bg-cyber-cyan/10', 'text-cyber-cyan');
+                tab.classList.add('border-slate-800', 'bg-slate-900', 'text-slate-400');
+            });
+
+            // Hide all tab contents
+            document.querySelectorAll('.pay-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Activate chosen tab
+            const activeTab = document.getElementById(`paytab-${tabName}`);
+            const activeContent = document.getElementById(`paycontent-${tabName}`);
+
+            if (activeTab && activeContent) {
+                activeTab.classList.remove('border-slate-800', 'bg-slate-900', 'text-slate-400');
+                activeTab.classList.add('border-cyber-lime', 'bg-cyber-lime/10', 'text-cyber-lime');
+                activeContent.classList.remove('hidden');
+            }
+        }
+
+        function updateCardPreview() {
+            const num = document.getElementById('input-card-num').value || '•••• •••• •••• ••••';
+            const name = document.getElementById('input-card-name').value || 'ALEX QUANTUM';
+            const exp = document.getElementById('input-card-exp').value || '12/29';
+
+            document.getElementById('card-preview-num').innerText = num;
+            document.getElementById('card-preview-name').innerText = name.toUpperCase();
+            document.getElementById('card-preview-exp').innerText = exp;
+        }
+
+        function selectCrypto(symbol) {
+            playSound('click');
+            selectedCryptoToken = symbol;
+            document.querySelectorAll('.crypto-btn').forEach(b => {
+                b.classList.remove('border-cyber-purple', 'bg-cyber-purple/20', 'text-white');
+                b.classList.add('border-slate-800', 'bg-slate-950', 'text-slate-400');
+            });
+
+            const activeBtn = document.getElementById(`cryptobtn-${symbol}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-slate-800', 'bg-slate-950', 'text-slate-400');
+                activeBtn.classList.add('border-cyber-purple', 'bg-cyber-purple/20', 'text-white');
+            }
+
+            const totalText = document.getElementById('cart-total').innerText.replace(/[^0-9]/g, '');
+            const totalBaht = parseInt(totalText) || 0;
+            updateCryptoAmount(totalBaht);
+        }
+
+        function updateCryptoAmount(baht) {
+            let converted = '0.00';
+            if (selectedCryptoToken === 'CCK') {
+                converted = (baht / 10).toFixed(2) + ' $CCK';
+            } else if (selectedCryptoToken === 'ETH') {
+                converted = (baht / 120000).toFixed(4) + ' ETH';
+            } else if (selectedCryptoToken === 'SOL') {
+                converted = (baht / 5000).toFixed(3) + ' SOL';
+            }
+            const el = document.getElementById('crypto-converted-amount');
+            if (el) el.innerText = converted;
+        }
+
+        function startPromptPayTimer() {
+            setInterval(() => {
+                if (promptPayTimer > 0) {
+                    promptPayTimer--;
+                    const mins = Math.floor(promptPayTimer / 60).toString().padStart(2, '0');
+                    const secs = (promptPayTimer % 60).toString().padStart(2, '0');
+                    const timerEl = document.getElementById('pp-timer');
+                    if (timerEl) timerEl.innerText = `${mins}:${secs}`;
+                }
+            }, 1000);
+        }
+
+        function simulateScanAndPay() {
+            playSound('success');
+            showToast('สแกนจ่ายสำเร็จ!', 'ระบบได้รับยอดชำระ PromptPay เรียบร้อยแล้ว', 'fa-circle-check', 'cyber-lime');
+            executePaymentProcess();
+        }
+
+        // EXECUTE PAYMENT & GENERATE RECEIPT
+        function executePaymentProcess() {
+            playSound('click');
+            const name = document.getElementById('ship-name').value.trim();
+            const phone = document.getElementById('ship-phone').value.trim();
+            const address = document.getElementById('ship-address').value.trim();
+
+            if (!name || !phone || !address) {
+                showToast('กรอกข้อมูลไม่ครบ', 'กรุณากรอกชื่อ เบอร์โทร และพิกัดจัดส่ง', 'fa-triangle-exclamation', 'cyber-pink');
+                return;
+            }
+
+            // Close Payment Gateway Modal & Show Processing Modal
+            closePaymentModal();
+            const processingModal = document.getElementById('processing-modal');
+            processingModal.classList.remove('hidden');
+
+            setTimeout(() => {
+                processingModal.classList.add('hidden');
+                playSound('success');
+                showHolographicReceipt(name, phone, address);
+            }, 2000);
+        }
+
+        function showHolographicReceipt(name, phone, address) {
+            const orderId = '#CCK-' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('receipt-order-id').innerText = orderId;
+
+            const totalText = document.getElementById('cart-total').innerText;
+
+            let payMethodName = 'PromptPay QR';
+            if (selectedPaymentMethod === 'card') payMethodName = 'Cyber Credit Card';
+            if (selectedPaymentMethod === 'crypto') payMethodName = `Crypto (${selectedCryptoToken})`;
+            if (selectedPaymentMethod === 'warppay') payMethodName = 'Warp Pay Wallet';
+
+            const receiptDetails = document.getElementById('receipt-details');
+            receiptDetails.innerHTML = `
+                <div><strong>ผู้รับสินค้า:</strong> <span class="text-white">${name}</span></div>
+                <div><strong>เบอร์การสื่อสาร:</strong> <span class="text-white">${phone}</span></div>
+                <div><strong>พิกัดวาร์ปจัดส่ง:</strong> <span class="text-slate-300">${address}</span></div>
+                <div><strong>ช่องทางชำระเงิน:</strong> <span class="text-cyber-lime font-bold">${payMethodName}</span></div>
+                <div class="border-t border-slate-800 my-2 pt-2">
+                    ${cart.map(i => `
+                        <div class="flex justify-between py-0.5">
+                            <span>${i.name} x${i.qty}</span>
+                            <span>${i.price * i.qty} ฿</span>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="border-t border-slate-800 pt-1 font-bold text-cyber-cyan flex justify-between text-sm">
+                    <span>ราคารวมทั้งสิ้น (VAT 7% แล้ว):</span>
+                    <span>${totalText}</span>
+                </div>
+            `;
+
+            // Reset cart
+            cart = [];
+            appliedCoupon = null;
+            updateCartUI();
+
+            document.getElementById('receipt-modal').classList.remove('hidden');
+            showToast('สั่งซื้อสำเร็จแล้ว!', `หมายเลขสั่งซื้อ ${orderId} กำลังวาร์ปส่งอาหาร`, 'fa-box-check', 'cyber-lime');
+        }
+
+        function printReceipt() {
+            playSound('click');
+            window.print();
+        }
+
+        function closeReceiptModal() {
+            playSound('click');
+            document.getElementById('receipt-modal').classList.add('hidden');
+        }
+
+        // AI SYNTHESIZER
+        function synthesizeFood() {
+            playSound('synth');
+            const base = document.getElementById('synth-base').value;
+            const sauce = document.getElementById('synth-sauce').value;
+            const topping = document.getElementById('synth-topping').value;
+
+            const btn = document.getElementById('synth-btn');
+            btn.innerHTML = `<i class="fa-solid fa-atom animate-spin"></i> กำลังคำนวณโครงสร้างอะตอมอาหาร...`;
+            btn.disabled = true;
+
+            setTimeout(() => {
+                playSound('success');
+                btn.innerHTML = `<i class="fa-solid fa-atom"></i> เริ่มสังเคราะห์อาหาร (SYNTHESIZE)`;
+                btn.disabled = false;
+
+                const synthId = Date.now();
+                const randomPrice = Math.floor(Math.random() * 80) + 160;
+                const randomCal = Math.floor(Math.random() * 300) + 300;
+
+                const customItem = {
+                    id: synthId,
+                    name: `${base.replace(/^[^\s]+\s/, '')} ซอส${sauce.replace(/^[^\s]+\s/, '')} โรย${topping.replace(/^[^\s]+\s/, '')}`,
+                    enName: "AI Synthesized Quantum Dish",
+                    price: randomPrice,
+                    icon: "🛸",
+                    desc: `เมนูพิเศษเฉพาะตัวที่ถูกสังเคราะห์ขึ้นโดยการรวมตัวของ ${base}, ${sauce} และ ${topping}`,
+                    buff: "⚡ เพิ่มความเร็วสมองและความต้านทานมิติ +50%",
+                    nutrition: { cal: `${randomCal} kcal`, protein: "28g", carb: "40g", fat: "15g" }
+                };
+
+                const resultContainer = document.getElementById('synth-result');
+                resultContainer.classList.remove('hidden');
+                resultContainer.innerHTML = `
+                    <div class="rounded-2xl bg-slate-900 border-2 border-cyber-lime p-5 text-left space-y-3 neon-glow-lime animate-pulse-slow">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-full bg-cyber-lime/20 text-cyber-lime text-[10px] font-mono font-bold">
+                                ✨ AI CUSTOM DISH CREATED
+                            </span>
+                            <span class="text-2xl font-black text-cyber-lime font-orbitron">${customItem.price} ฿</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white font-orbitron">${customItem.name}</h3>
+                        <p class="text-xs text-slate-300">${customItem.desc}</p>
+                        <div class="text-xs text-cyber-cyan font-mono font-bold">${customItem.buff}</div>
+                        <button onclick='addCustomToCart(${JSON.stringify(customItem)})' class="w-full py-2.5 rounded-xl bg-cyber-lime text-slate-950 font-bold font-orbitron text-xs hover:brightness-110">
+                            <i class="fa-solid fa-cart-plus"></i> เพิ่มเมนูสังเคราะห์นี้ลงตะกร้า
+                        </button>
+                    </div>
+                `;
+
+                showToast('สังเคราะห์อาหารสำเร็จ', `ได้เมนูใหม่ "${customItem.name}"`, 'fa-wand-magic-sparkles', 'cyber-lime');
+            }, 1200);
+        }
+
+        function addCustomToCart(itemObj) {
+            addToCart(null, itemObj);
+        }
+
+        // ARCADE GAME LOGIC
+        let canvas, ctx;
+        let gameRunning = false;
+        let score = 0;
+        let wok = { x: 0, y: 0, width: 80, height: 20 };
+        let items = [];
+
+        function initCanvasGame() {
+            canvas = document.getElementById('wokCanvas');
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                wok.x = e.clientX - rect.left - wok.width / 2;
+            });
+
+            canvas.addEventListener('touchmove', (e) => {
+                if (e.touches.length > 0) {
+                    const rect = canvas.getBoundingClientRect();
+                    wok.x = e.touches[0].clientX - rect.left - wok.width / 2;
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (!gameRunning) return;
+                if (e.key === 'ArrowLeft') wok.x -= 25;
+                if (e.key === 'ArrowRight') wok.x += 25;
+            });
+        }
+
+        function resizeCanvas() {
+            if (!canvas) return;
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+            wok.y = canvas.height - 35;
+        }
+
+        function startWokGame() {
+            playSound('click');
+            document.getElementById('game-overlay').classList.add('hidden');
+            score = 0;
+            document.getElementById('game-score').innerText = score;
+            items = [];
+            gameRunning = true;
+            wok.x = canvas.width / 2 - wok.width / 2;
+            gameLoop();
+        }
+
+        function gameLoop() {
+            if (!gameRunning) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (Math.random() < 0.04) {
+                const icons = ['🥓', '🦐', '🌶️', '🍳', '☄️'];
+                const icon = icons[Math.floor(Math.random() * icons.length)];
+                items.push({
+                    x: Math.random() * (canvas.width - 30),
+                    y: -30,
+                    speed: 2.5 + Math.random() * 2.5,
+                    icon: icon,
+                    isBad: icon === '☄️'
+                });
+            }
+
+            ctx.fillStyle = '#00f3ff';
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#00f3ff';
+            ctx.beginPath();
+            ctx.roundRect(wok.x, wok.y, wok.width, wok.height, 10);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            wok.x = Math.max(0, Math.min(canvas.width - wok.width, wok.x));
+
+            for (let i = items.length - 1; i >= 0; i--) {
+                let item = items[i];
+                item.y += item.speed;
+
+                ctx.font = '22px Arial';
+                ctx.fillText(item.icon, item.x, item.y);
+
+                if (item.y >= wok.y - 10 && item.y <= wok.y + wok.height && item.x >= wok.x - 15 && item.x <= wok.x + wok.width) {
+                    if (item.isBad) {
+                        score = Math.max(0, score - 15);
+                        playSound('click');
+                    } else {
+                        score += 10;
+                        playSound('catch');
+                    }
+                    document.getElementById('game-score').innerText = score;
+                    items.splice(i, 1);
+
+                    if (score >= 100) {
+                        gameRunning = false;
+                        playSound('success');
+                        appliedCoupon = 'COSMIC20';
+                        calculateCartTotal();
+                        showToast('🎉 ชนะมินิเกม!', 'สะสมครบ 100 คะแนน รับส่วนลด 20% (โค้ด COSMIC20 ทำงานแล้ว)', 'fa-trophy', 'cyber-lime');
+                        document.getElementById('game-overlay').classList.remove('hidden');
+                        return;
+                    }
+                } else if (item.y > canvas.height + 30) {
+                    items.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        // PITCH DECK SLIDE SYSTEM
+        const PITCH_SLIDES = [
+            {
+                step: 1,
+                title: "1. Executive Summary & Problem Statement",
+                content: `
+                    <div class="space-y-3 text-sm leading-relaxed text-slate-300">
+                        <p class="text-cyber-cyan font-bold">ปัญหาของธุรกิจอาหารตามสั่งยุคเดิม (Pain Points):</p>
+                        <ul class="list-disc pl-5 space-y-1 text-xs">
+                            <li>เมนูอาหารจำเจ ขาดความแปลกใหม่ ไม่ตอบโจทย์พฤติกรรมผู้บริโภคยุค Gen Z & Digital Native</li>
+                            <li>ขาดข้อมูลโภชนาการและส่วนผสมที่ชัดเจนสำหรับผู้รักสุขภาพ</li>
+                            <li>ขาดช่องทางชำระเงินที่ทันสมัย ไร้การปฏิสัมพันธ์กับผู้ซื้อ</li>
+                        </ul>
+                        <p class="text-cyber-pink font-bold pt-2">แนวทางการแก้ไขด้วย "ครัวหลุดโลก":</p>
+                        <p class="text-xs">สร้างแพลตฟอร์มสั่งอาหาร Cyberpunk ผสาน AI, Gamification และระบบชำระเงิน Cyber Payment Gateway แบบไร้รอยต่อ</p>
+                    </div>
+                `
+            },
+            {
+                step: 2,
+                title: "2. Brand Concept & Naming Strategy",
+                content: `
+                    <div class="space-y-3 text-sm leading-relaxed text-slate-300">
+                        <div class="p-3 bg-slate-950 rounded-xl border border-cyber-cyan/40">
+                            <h4 class="font-bold text-cyber-cyan font-orbitron">ชื่อร้าน: "ครัวหลุดโลก" (Crazy Cosmic Kitchen)</h4>
+                            <p class="text-xs text-slate-400 mt-1">สื่อถึงความคิดสร้างสรรค์ที่ไร้ขอบเขต เมนูอาหารที่ไม่เคยมีใครทำมาก่อนในจักรวาล</p>
+                        </div>
+                        <p class="text-xs"><strong>Visual & Mood Identity:</strong> เน้นธีม Cyberpunk Dark Mode แสงสีนีออน (Cyan, Pink, Lime) และ Futuristic Typography</p>
+                    </div>
+                `
+            },
+            {
+                step: 3,
+                title: "3. Target Audience & Cyber Payment Value",
+                content: `
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                            <h5 class="font-bold text-cyber-pink font-orbitron mb-1">กลุ่มเป้าหมายหลัก</h5>
+                            <p>Gen Z, Gamers, Tech Enthusiasts, และ Digital Nomads ที่ชอบความสะดวก ชำระเงินไวผ่าน QR / Crypto</p>
+                        </div>
+                        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                            <h5 class="font-bold text-cyber-lime font-orbitron mb-1">จุดเด่นระบบชำระเงิน</h5>
+                            <p>รองรับทั้ง PromptPay QR, บัตรเครดิต Interactive Cyber Card และ Crypto Wallet พร้อมใบเสร็จฮอโลกราฟิก</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                step: 4,
+                title: "4. AI Integration & Tech Engine",
+                content: `
+                    <div class="space-y-3 text-sm text-slate-300">
+                        <p class="text-xs">นำเทคโนโลยี AI และ Web Engine มาประยุกต์ใช้ครบวงจร:</p>
+                        <ol class="list-decimal pl-5 space-y-1 text-xs">
+                            <li><strong class="text-cyber-cyan">AI Food Synthesizer:</strong> ให้ลูกค้าสั่งเมนู DIY ผ่านการประมวลผลคำนวณแคลอรี</li>
+                            <li><strong class="text-cyber-pink">Dynamic Payment Gateway:</strong> เจนเนอเรต QR Code และแปลงค่าเหรียญคริปโตแบบเรียลไทม์</li>
+                            <li><strong class="text-cyber-lime">Holographic Order Tracker:</strong> ติดตามสถานะการปรุงอาหารและวาร์ปจัดส่ง</li>
+                        </ol>
+                    </div>
+                `
+            },
+            {
+                step: 5,
+                title: "5. UX/UI & Gamification Strategy",
+                content: `
+                    <div class="space-y-3 text-xs text-slate-300">
+                        <p><strong class="text-cyber-cyan">กลยุทธ์การออกแบบอินเทอร์เฟซ:</strong></p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Micro-Interactions & Web Audio SFX:</strong> เสียงเอฟเฟกต์โต้ตอบทุกจุดสัมผัส</li>
+                            <li><strong>Seamless Gamification:</strong> เล่นเกมรับส่วนลด แล้วนำมาตัดชำระเงินในขั้นตอนเดียว</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                step: 6,
+                title: "6. Digital Marketing & Financial Growth",
+                content: `
+                    <div class="space-y-3 text-xs text-slate-300">
+                        <div class="p-3 bg-slate-950 rounded-xl border border-cyber-purple/50">
+                            <h5 class="font-bold text-cyber-purple font-orbitron mb-1">กลยุทธ์เติบโตทางธุรกิจ</h5>
+                            <p>1. <strong>Viral Social Proof:</strong> ลูกค้าแชร์ใบเสร็จฮอโลกราฟิกสุดเท่ลง Instagram / TikTok</p>
+                            <p>2. <strong>High Conversion Checkout:</strong> ลด Friction การชำระเงิน ทำให้ปิดการขายสำเร็จสูงขึ้น 45%</p>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        let currentSlide = 1;
+
+        function initPitchSlides() { showSlide(1); }
+
+        function showSlide(slideNum) {
+            currentSlide = slideNum;
+            const slide = PITCH_SLIDES.find(s => s.step === slideNum);
+            if (!slide) return;
+
+            document.getElementById('slide-content-area').innerHTML = `
+                <h4 class="text-base font-bold font-orbitron text-cyber-purple mb-2">${slide.title}</h4>
+                ${slide.content}
+            `;
+
+            document.getElementById('slide-indicator').innerText = `Slide ${slideNum} of ${PITCH_SLIDES.length}`;
+
+            document.querySelectorAll('.slide-tab').forEach((tab, index) => {
+                if (index + 1 === slideNum) {
+                    tab.classList.add('bg-cyber-purple', 'text-white', 'border-cyber-purple');
+                    tab.classList.remove('bg-slate-900', 'text-slate-300');
+                } else {
+                    tab.classList.remove('bg-cyber-purple', 'text-white', 'border-cyber-purple');
+                    tab.classList.add('bg-slate-900', 'text-slate-300');
+                }
+            });
+        }
+
+        function nextSlide() {
+            playSound('click');
+            if (currentSlide < PITCH_SLIDES.length) showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            playSound('click');
+            if (currentSlide > 1) showSlide(currentSlide - 1);
+        }
+
+        function openPitchModal() {
+            playSound('click');
+            document.getElementById('pitch-modal').classList.remove('hidden');
+        }
+
+        function closePitchModal() {
+            playSound('click');
+            document.getElementById('pitch-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
